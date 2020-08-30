@@ -8,13 +8,17 @@ let results = document.getElementById("punctuation");
 // LE PREGUNTAMOS AL CONCURSANTE LAS CARACTERÍSTICAS DE QUIZ QUE QUIERE
 // -------------------------------------------------------------------------------------------
 // let difficulty = prompt("¿qué nivel de dificultad quieres?");
-// let number=prompt("¿cuantas preguntas quieres?");
+let number=10;
+// prompt("With how many questions do you dare?");
 // let category=prompt("¿qué categoría quieres?");
 // let type=prompt("¿qué tipo de preguntas quieres?");
-let number = 5;
-let category = 18;
-let type = "multiple";
-let difficulty = "easy";
+// let number = 5;
+// let category = "&category="+18;
+let type = "&type=" + "multiple";
+// let difficulty = "&difficulty=" +"easy";
+// function saludo(){
+//   let number=prompt("hola");
+// }
 
 // -------------------------------------------------------------------------------------------
 // FIJAMOS LAS PRIMERAS VARIABLES EN 0
@@ -25,6 +29,7 @@ let fallos = 0;
 let answerUser = [];
 let questionsApiDb;
 let answerCorrect = [];
+
 
 // -------------------------------------------------------------------------------------------
 // CREAMOS LA FUNCIÓN QUE SE VA A EJECUTAR CUANDO HAGAMOS CLICK
@@ -70,7 +75,7 @@ function comparar(correcta, usuario) {
   } else if (aciertos > fallos) {
     mensaje = "VERY GOOD!";
   } else {
-    mensaje = "YOU SHOULD TRY IT AGAIN..";
+    mensaje = "YOU SHOULD TRY IT AGAIN...";
   }
 
   let cardResults = `
@@ -90,15 +95,11 @@ function comparar(correcta, usuario) {
 // -------------------------------------------------------------------------------------------
 // CAPTURAMOS LA BASE DE DATOS DE PREGUNTAS Y RESPUESTAS DESDE UNA API
 // -------------------------------------------------------------------------------------------
-fetch(
-  "https://opentdb.com/api.php?amount=" +
-    number +
-    "&category=" +
-    category +
-    "&difficulty=" +
-    difficulty +
-    "&type=" +
-    type
+fetch("https://opentdb.com/api.php?amount=" +
+number +
+// category +
+// difficulty +
+type
 )
   .then((response) => response.json())
   .then((Api) => {
