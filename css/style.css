@@ -1,0 +1,246 @@
+/* --------------------------ESTILOS GENERALES------------------------- */
+html {
+  background-image: url(../img/2363269.jpg);
+  background-size: cover;
+  height: 100vh;
+  color: white;
+  }
+
+/* ----------------------------HEADER---------------------------------- */
+header {
+  text-align: center;
+  height: 12vh;
+  background-color: rgb(230, 102, 102);
+  background-image: url(../img/puntos-01-01.png);
+  background-repeat: repeat-x;
+  background-size: 25vw;
+  background-position: 0em -1em;
+}
+header a.special {
+  font-family: "Luckiest Guy", cursive;
+  color: #fff;
+  font-size: 10vh;
+  text-decoration: none;
+  position: relative;
+  top: 10px;
+}
+
+/* -----------------------MAIN onBoard----------------------- */
+main div#onBoard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Architects Daughter", cursive;
+  padding: 10vh 8vw;
+}
+main p.message {
+  background-color: rgb(255, 255, 255, 0.85);
+  padding: 2%;
+  border-radius: 10px;
+  color: rgb(56, 56, 56);
+  text-align: left;
+  width: 90vw;
+  font-size: 3.5vh;
+}
+main a.button {
+  font-family: "Luckiest Guy", cursive;
+  text-decoration: none;
+  color: #fff;
+  margin: 5vh 10vw;
+  background-color: rgb(230, 102, 102);
+  padding: 1%;
+  border-radius: 5px;
+  font-size: 6vh;
+}
+main a:hover {
+  background-color: #fff;
+  color: rgb(230, 102, 102);
+}
+main div p span.special {
+  font-family: "Luckiest Guy", cursive;
+  color: rgb(230, 102, 102);
+  font-size: 1em;
+}
+/* ----------------------MAIN game------------------ */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+main div#game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Architects Daughter", cursive;
+  font-size: 3.5vh;
+  width: 90vw;
+  text-align: left;
+  padding: 2%;
+  margin: 10vh 0 2vh 0;
+  background-color: rgb(255, 255, 255, 0.85);
+  border-radius: 10px;
+  color: rgb(56, 56, 56);
+}
+main p.question {
+  padding: 1% 0 5% 0;
+  }
+main a.answer {
+  padding: 1%;
+  text-align: left;
+  text-decoration: none;
+  color: rgb(56, 56, 56);
+}
+main a.answer:hover {
+  background-color: rgb(230, 102, 102, 0.5);
+  color: #fff;
+  border-radius: 10px;
+}
+main a.answer:active {
+  background-color: rgb(230, 102, 102);
+}
+main img {
+  margin: 20px 0px;
+  border-radius: 10px;
+}
+/* ----------------------MAIN results------------------ */
+main div#punctuation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Architects Daughter", cursive;
+  font-size: 3.5vh;
+  padding-top: 5vh;
+}
+main div#punctuation p.text{
+  text-align: center;
+  color: rgb(230, 102, 102);
+  padding-bottom: 4vh;
+  font-weight: 700;
+}
+/*-------------------------FOOTER--------------------------- */
+footer {
+  width: 100vw;
+  height: 5vh;
+  background-color: rgb(230, 102, 102);
+  position: absolute;
+  bottom: 0px;
+}
+footer div {
+  font-family: "Architects Daughter", cursive;
+  margin: 1vh;
+  font-size: 2vh;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------
+---------------------------------MINI----------------------------------
+----------------------------------------------------------------------- */
+@media (max-width: 300px) {
+  header a.special {
+    font-size: 7vh;
+    top: 20px;
+  }
+  main img {
+    width: 90%;
+    height: auto;
+  }
+}
+/* --------------------------------------------------------------------
+-------------------------------PHONES----------------------------------
+----------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  main img {
+    width: 90%;
+    height: auto;
+  }
+}
+/* --------------------------------------------------------------------
+--------------------------TABLETS PORTRAIT-----------------------------
+----------------------------------------------------------------------- */
+@media (min-width: 600px) and (max-width: 900px) {
+  header {
+    background-size: 15vw;
+  }
+  main p.message {
+    width: 75vw;
+  }
+  main div#game {
+    width: 75vw;
+  }
+  main img {
+    width: 90%;
+  }
+}
+/* --------------------------------------------------------------------
+--------------------------TABLETS LANDSCAPE----------------------------
+----------------------------------------------------------------------- */
+@media (min-width: 900px) and (max-width: 1200px) {
+  header {
+    background-size: 12vw;
+  }
+  main p.message {
+    width: 60vw;
+  }
+  main div#game {
+    width: 60vw;
+  }
+  main img {
+    width: 65%;
+  }
+}
+/* --------------------------------------------------------------------
+--------------------------------LAPTOP---------------------------------
+----------------------------------------------------------------------- */
+@media (min-width: 1200px) and (max-width: 1600px) {
+  header {
+    background-size: 10vw;
+  }
+  main p.message {
+    width: 60vw;
+  }
+  main div#game {
+    width: 60vw;
+  }
+  main img {
+    width: 70%;
+  }
+}
+/* --------------------------------------------------------------------
+------------------------------BIG-LAPTOP-------------------------------
+----------------------------------------------------------------------- */
+@media (min-width: 1200px) and (max-width: 1590px) {
+  header {
+    background-size: 10vw;
+  }
+  main p.message {
+    width: 60vw;
+  }
+  main div#game {
+    width: 60vw;
+  }
+  main img {
+    width: 70%;
+  }
+}
+/* --------------------------------------------------------------------
+-------------------------------DESKTOP---------------------------------
+----------------------------------------------------------------------- */
+@media (min-width: 1590px) and (max-width: 4000px) {
+  header {
+    background-size: 7.5vw;
+  }
+  header a.special {
+    top: 10px;
+  }
+  main p.message {
+    width: 50vw;
+  }
+  main div#game {
+    width: 50vw;
+  }
+  main img {
+    width: 55vh;
+  }
+}
