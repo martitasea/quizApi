@@ -4,7 +4,7 @@ html {
   background-size: cover;
   height: 100vh;
   color: white;
-  }
+}
 
 /* ----------------------------HEADER---------------------------------- */
 header {
@@ -25,28 +25,36 @@ header a.special {
   top: 10px;
 }
 
-/* -----------------------MAIN onBoard----------------------- */
-main div#onBoard {
+/* -----------------------MAIN container----------------------- */
+main div#container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  font-family: "Architects Daughter", cursive;
-  padding: 10vh 8vw;
-}
-main p.message {
+  align-items: flex-start;
+  padding: 3vh 0 0.5vh 0;
+  font-family: 'Gruppo', cursive;
+  font-weight: 900;
   background-color: rgb(255, 255, 255, 0.85);
-  padding: 2%;
   border-radius: 10px;
+  margin: 3vh 0 3vh 0;
+  width: 90vw;
+  }
+main p.first{
+  margin: 0% 3% 0% 3%;
   color: rgb(56, 56, 56);
   text-align: left;
-  width: 90vw;
+  font-size: 3.5vh;
+}
+  main p.message {
+  margin: 3% 3% 0% 3%;
+  color: rgb(56, 56, 56);
+  text-align: left;
   font-size: 3.5vh;
 }
 main a.button {
   font-family: "Luckiest Guy", cursive;
   text-decoration: none;
   color: #fff;
-  margin: 5vh 10vw;
+  margin: 0vh 10vw;
   background-color: rgb(230, 102, 102);
   padding: 1%;
   border-radius: 5px;
@@ -61,6 +69,34 @@ main div p span.special {
   color: rgb(230, 102, 102);
   font-size: 1em;
 }
+main div input.settings,
+main div select.settings {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2vh;
+  background-color: rgb(255, 255, 255, 0.6);
+  margin-top: 1vh;
+  margin-left: 2%;
+  width: 26.5vw;
+  padding: 2%;
+  border-radius: 10px;
+  text-align: left;
+  border: 1px solid rgb(230, 102, 102);
+}
+main div input.settings::placeholder {
+  color: rgb(230, 102, 102);
+}
+select#catUser.settings,
+select#difUser.settings {
+  color: rgb(230, 102, 102);
+  width: 30vw;
+}
+select#catUser.settings {
+  margin-bottom: 2vh;
+}
+.multiple{
+  
+}
+
 /* ----------------------MAIN game------------------ */
 main {
   display: flex;
@@ -72,7 +108,8 @@ main div#game {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: "Architects Daughter", cursive;
+  font-family: 'Gruppo', cursive;
+  font-weight: 900;
   font-size: 3.5vh;
   width: 90vw;
   text-align: left;
@@ -84,7 +121,7 @@ main div#game {
 }
 main p.question {
   padding: 1% 0 5% 0;
-  }
+}
 main a.answer {
   padding: 1%;
   text-align: left;
@@ -109,11 +146,12 @@ main div#punctuation {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: "Architects Daughter", cursive;
+  font-family: 'Gruppo', cursive;
+  font-weight: 900;
   font-size: 3.5vh;
   padding-top: 5vh;
 }
-main div#punctuation p.text{
+main div#punctuation p.text {
   text-align: center;
   color: rgb(230, 102, 102);
   padding-bottom: 4vh;
@@ -128,8 +166,9 @@ footer {
   bottom: 0px;
 }
 footer div {
-  font-family: "Architects Daughter", cursive;
-  margin: 1vh;
+  font-family: 'Gruppo', cursive;
+  font-weight: 900;
+  margin: 1vh 0 0 0;
   font-size: 2vh;
   text-align: center;
 }
@@ -163,7 +202,8 @@ footer div {
   header {
     background-size: 15vw;
   }
-  main p.message {
+  main p.message,
+  p.settings {
     width: 75vw;
   }
   main div#game {
@@ -180,7 +220,7 @@ footer div {
   header {
     background-size: 12vw;
   }
-  main p.message {
+  main p.message p.settings {
     width: 60vw;
   }
   main div#game {
@@ -197,7 +237,7 @@ footer div {
   header {
     background-size: 10vw;
   }
-  main p.message {
+  main p.message p.settings {
     width: 60vw;
   }
   main div#game {
@@ -214,7 +254,7 @@ footer div {
   header {
     background-size: 10vw;
   }
-  main p.message {
+  main p.message p.settings {
     width: 60vw;
   }
   main div#game {
@@ -234,7 +274,7 @@ footer div {
   header a.special {
     top: 10px;
   }
-  main p.message {
+  main p.message p.settings {
     width: 50vw;
   }
   main div#game {
