@@ -3,22 +3,24 @@
 // -------------------------------------------------------------------------------------------
 let container = document.getElementById("game");
 let results = document.getElementById("punctuation");
-
+console.log("empieza el js");
 // -------------------------------------------------------------------------------------------
-// LE PREGUNTAMOS AL CONCURSANTE LAS CARACTERÍSTICAS DE QUIZ QUE QUIERE
+// LE PREGUNTAMOS AL CONCURSANTE LAS CARACTERÍSTICAS DE QUIZ QUE QUIERE 
+// MEDIANTE UN FORMULARIO Y ALMACENAMOS LAS RESPUESTAS
 // -------------------------------------------------------------------------------------------
-// let difficulty = prompt("¿qué nivel de dificultad quieres?");
-let number=10;
-// prompt("With how many questions do you dare?");
-// let category=prompt("¿qué categoría quieres?");
-// let type=prompt("¿qué tipo de preguntas quieres?");
-// let number = 5;
-// let category = "&category="+18;
+// Esta variable van a ser fija
 let type = "&type=" + "multiple";
-// let difficulty = "&difficulty=" +"easy";
-// function saludo(){
-//   let number=prompt("hola");
-// }
+let difficulty = "&difficulty=" + "easy";
+
+
+let start = document.getElementById("comeOn");
+start.onclick = () => {
+  sessionStorage.setItem("number",document.getElementById("numUser").value);
+  sessionStorage.setItem("difficulty",document.getElementById("difUser").value);
+  sessionStorage.setItem("category",document.getElementById("catUser").value);
+  console.log(sessionStorage.number);
+  window.location.replace("question.html");
+};
 
 // -------------------------------------------------------------------------------------------
 // FIJAMOS LAS PRIMERAS VARIABLES EN 0
@@ -30,12 +32,93 @@ let answerUser = [];
 let questionsApiDb;
 let answerCorrect = [];
 
+// -------------------------------------------------------------------------------------------
+// CREAMOS UN ARRAY DE PREGUNTAS Y RESPUESTAS PROPIO
+// -------------------------------------------------------------------------------------------
+let questionDb = [
+  {
+    question: "1 ¿Qué famoso arquitecto construyó la casa de la cascada?",
+    answers: ["Mies van der Rohe", "Frank Lloyd Wright", "Antoni Gaudí"],
+    image: "/quiz/img/casaCascada.jpg",
+    rightAnswer: 1,
+  },
+  {
+    question: "2 ¿Cúal es el arquitecto del museo Guggenheim de Bilbao?",
+    answers: ["Frank Ghery", "Norman Foster", "Rafael Moneo"],
+    image: "/quiz/img/guggenheim.jpg",
+    rightAnswer: 0,
+  },
+  {
+    question: "3 ¿Qué longitud tien la Gran Muralla China?",
+    answers: ["6.400 km", "3.150 km", "840 km"],
+    image: "/quiz/img/murallaChina.jpg",
+    rightAnswer: 0,
+  },
+  {
+    question: "4 ¿Qué edificio es el de la fotografía?",
+    answers: [
+      "Glass House, de Philip Johnson",
+      "Casa Rietveld Schröder, de Gerrit Rietveld",
+      "Case Study House 8, de  Charles y Ray Eames",
+    ],
+    image: "/quiz/img/edificio01.jpg",
+    rightAnswer: 1,
+  },
+  {
+    question: "5 ¿Dónde nació Norman Foster?",
+    answers: ["Inglaterra", "Australia", "Nueva Zelanda"],
+    image: "/quiz/img/normanFoster.jpg",
+    rightAnswer: 0,
+  },
+  {
+    question:
+      "6  ¿Cuál de los siguientes arquitectos no participó en eldiseño del Georges Pompidou de París?",
+    answers: ["Renzo Piano", "Richard Rogers", "Norman Foster"],
+    image: "/quiz/img/pompidou.jpg",
+    rightAnswer: 2,
+  },
+  {
+    question:
+      "7 ¿En qué año comenzó a otorgarse el premio Pritzker de arquitectura?",
+    answers: ["1979", "1992", "1963"],
+    image: "/quiz/img/pritzker.png",
+    rightAnswer: 0,
+  },
+  {
+    question: "8 ¿Cuál es el edificio de la fotografía?",
+    answers: [
+      "Casa del Fascio",
+      "Filarmónica de Berlín",
+      "Asamblea de Chandigarh",
+    ],
+    image: "/quiz/img/chandigarh.jpg",
+    rightAnswer: 2,
+  },
+  {
+    question: "9 ¿Qué es el Modulor?",
+    answers: [
+      "La unidad de medida básica de la antigua Roma",
+      "Un ensayo sobre la escala humana aplicada a la arquitectura",
+      "Una escultura ciclópea construida en Francia",
+    ],
+    image: "/quiz/img/modulor.png",
+    rightAnswer: 1,
+  },
+  {
+    question:
+      "10 ¿Cómo se llama el triangulo que tiene todos sus lados diferentes?",
+    answers: ["Isósceles", "Escaleno", "Equilátero"],
+    image: "/quiz/img/triangulo.png",
+    rightAnswer: 1,
+  },
+];
 
 // -------------------------------------------------------------------------------------------
 // CREAMOS LA FUNCIÓN QUE SE VA A EJECUTAR CUANDO HAGAMOS CLICK
 // -------------------------------------------------------------------------------------------
 function cambio(index) {
-  if (click < number - 1) {
+  if (click < sessionStorage.number - 1) {
+    answerUser[click] = index;
     click += 1;
     cardAnswers = `
     <p class="question">${questionsApiDb[click].question}</p>
@@ -45,12 +128,11 @@ function cambio(index) {
     <a href="#" id="four" class="answer" onclick="cambio(3)">d) ${questionsApiDb[click].answers[3]}</a>
     `;
     container.innerHTML = cardAnswers;
-    answerUser[click] = index;
-    console.log("answerUser", answerUser);
-    console.log("click", click);
+    // console.log("answerUser", answerUser);
+    // console.log("click", click);
   } else {
-    answerUser[number - 1] = index;
-    console.log("Respuestas del usuario", answerUser);
+    answerUser[sessionStorage.number - 1] = index;
+    // console.log("Respuestas del usuario", answerUser);
     comparar(answerCorrect, answerUser);
   }
 }
@@ -59,7 +141,7 @@ function cambio(index) {
 // CREAMOS LA FUNCIÓN QUE SE VA A EJECUTAR CUANDO TERMINEMOS DE CONTESTAR
 // -------------------------------------------------------------------------------------------
 function comparar(correcta, usuario) {
-  for (i = 0; i < number; i++) {
+  for (i = 0; i < sessionStorage.number; i++) {
     if (correcta[i] == usuario[i]) {
       aciertos++;
     } else {
@@ -67,10 +149,10 @@ function comparar(correcta, usuario) {
     }
   }
   let mensaje;
-  console.log("aciertos " + aciertos);
-  console.log("fallos " + fallos);
+  // console.log("aciertos " + aciertos);
+  // console.log("fallos " + fallos);
 
-  if (aciertos == number) {
+  if (aciertos == sessionStorage.number) {
     mensaje = "YOU ARE A GENIOUS!";
   } else if (aciertos > fallos) {
     mensaje = "VERY GOOD!";
@@ -89,26 +171,19 @@ function comparar(correcta, usuario) {
 }
 
 // -------------------------------------------------------------------------------------------
-// CREAMOS LA FUNCIÓN QUE DESORDENARÁ EL ARRAY CON LAS RESPUESTAS (allAnswers)
-// -------------------------------------------------------------------------------------------
-
-// -------------------------------------------------------------------------------------------
 // CAPTURAMOS LA BASE DE DATOS DE PREGUNTAS Y RESPUESTAS DESDE UNA API
 // -------------------------------------------------------------------------------------------
-fetch("https://opentdb.com/api.php?amount=" +
-number +
-// category +
-// difficulty +
-type
+fetch(
+  "https://opentdb.com/api.php?amount=" +  sessionStorage.number +  // category +  // difficulty +    type
 )
   .then((response) => response.json())
   .then((Api) => {
     // Imprimimos la API para conocer su estructura
-    console.log("Esta es la API (Api.results)", Api.results);
-    let number = Api.results.length;
-    console.log("Longitud de la API (Api.results.length)", Api.results.length);
-    console.log("Número de preguntas (number)", number);
-    console.log("El contador de click está a", click);
+    // console.log("Esta es la API (Api.results)", Api.results);
+    // sessionStorage.number = Api.results.length;
+    // console.log("Longitud de la API (Api.results.length)", Api.results.length);
+    // console.log("Número de preguntas (number)", number);
+    // console.log("El contador de click está a", click);
     //----------Creamos un array con la misma estructura que nuestra questionDb (questionsApiDb)
     questionsApiDb = Api.results.map((item) => {
       //---------- A la nueva clave 'answers' le asignamos el valor de las respuestas incorrectas
@@ -144,13 +219,10 @@ type
 
       return item;
     });
-    console.log(
-      "Aquí están almacenadas las respuestas correctas (answerCorrect)",
-      answerCorrect
-    );
+    // console.log("Aquí están almacenadas las respuestas correctas (answerCorrect)",answerCorrect);
     // ---------Aquí se cierra el .map ||||
     // ---------Creamos un array con las respuestas correctas
-    for (i = 0; i < number; i++) {
+    for (i = 0; i < sessionStorage.number; i++) {
       answerCorrect.push(questionsApiDb[i].rightAnswer);
     }
     let cardAnswers = `
@@ -161,6 +233,6 @@ type
     <a href="#" id="four" class="answer" onclick="cambio(3)">d) ${questionsApiDb[click].answers[3]}</a>
     `;
     container.innerHTML = cardAnswers;
-    console.log("Esta es la Api ordenada (questionsApiDb)", questionsApiDb);
+    // console.log("Esta es la Api ordenada (questionsApiDb)", questionsApiDb);
   });
 // ---------Aquí se cierra el fetch ||||

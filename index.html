@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <!-- Para que se adapte a todos los dispositivos -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:image" content="./img/portadaCuadrada.jpg" />  
     <!-- Ahora cargamos las hojas de estilo necesarias -->
     <link rel="stylesheet" type="text/css" href="css/reset.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -13,7 +12,10 @@
       href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
+      rel="stylesheet"
+    />
     <script src="js/index_api.js" defer></script>
     <title>THE QUIZ</title>
   </head>
@@ -23,48 +25,13 @@
       <a href="index.html" class="special">THE QUIZ</a>
     </header>
     <main>
-      <div id="container">
-        <p class="first">
+      <div id="onBoard">
+        <p class="message">
           Welcome to <span class="special">THE QUIZ,</span>
           a game to rest your knowledge.
         </p>
-        <p class="message">Choose the number of questions:</p>
-        <input class="settings" type="number" id="numUser" placeholder="Number of questions" required />
-        <p class="message">Choose the level of difficulty:</p>
-        <select class="settings" name="difUser" id="difUser" required/>
-            <option value="easy" class="settings">Easy</option>
-            <option value="medium" required>Medium</option>
-            <option value="difficult" required>Difficult</option>
-        </select>
-        <p class="message">Choose the type of questions:</p>
-        <select class="settings" name="catUser" id="catUser">
-          <option value="9">General Knowledge</option>
-          <option value="10">Entertaintment: Books</option>
-          <option value="11">Entertaintment: Film</option>
-          <option value="12">Entertaintment: Music</option>
-          <option value="13">Entertaintment: Musicals&Theatres</option>
-          <option value="14">Entertaintment: Television</option>
-          <option value="15">Entertaintment: Video Games</option>
-          <option value="16">Entertaintment: Board Games</option>
-          <option value="29">Entertaintment: Comics</option>
-          <option value="17">Science&Nature</option>
-          <option value="18">Science Computers</option>
-          <option value="19">Science Mathematics</option>
-          <option value="30">Science Gadgets</option>
-          <option value="20">Mythology</option>
-          <option value="21">Sports</option>
-          <option value="22">Geography</option>
-          <option value="23">History</option>
-          <option value="24">Politcs</option>
-          <option value="25">Art</option>
-          <option value="26">Celebrities</option>
-          <option value="27">Animals</option>
-          <option value="28">Vehicles</option>
-          <option value="31">Entertaintment: Japanese Anime&Manga</option>
-          <option value="32">Entertaintment: Cartoon&Animations</option>
-        </select>
+        <a class="button" class="special" href="question.html" onclick="saludo()">COME ON!</a>
       </div>
-    <a class="button" id="comeOn" class="special" href="#">COME ON!</a>
     </main>
     <footer>
       <div>THE QUIZ by MARTA PULIDO 2020</div>
